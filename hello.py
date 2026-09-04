@@ -4,7 +4,7 @@ print("My first post!")
 print("========================================")
 
 username =  input("Enter your username: ")
-age = input("Enter your age: ")
+age = int(input("Enter your age: "))
 category = input("Enter your category: ")
 
 print("\nInstagram Profile")
