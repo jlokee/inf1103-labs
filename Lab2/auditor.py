@@ -14,7 +14,7 @@ while inventory != "quit":
             print("You have", total_inventory, "items in inventory.")
         elif int(total_inventory) >500:
             print("Alert: Inventory exceeds 500 items. Please check your stock.")
-            inventory = "quit"
+
             break
     elif inventory == "quit":
         print("Exiting... Total Units Processed is", total_inventory, "items.")
