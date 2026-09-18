@@ -15,6 +15,10 @@ def get_valid_input():
         print("Invalid input. Please enter a valid number.")
         return "rejected"
 
+def process_delivery(current_total, new_value):
+    current_total += new_value
+    return current_total
+
 while True:
     inventory = get_valid_input()
     if inventory == "quit":
@@ -22,7 +26,7 @@ while True:
         print("Rejected Entries is", rej_inventory)
         break
     elif isinstance(inventory, int):
-        total_inventory += inventory
+        total_inventory = process_delivery(total_inventory, inventory)
         if total_inventory >500:
             print("Alert: Inventory exceeds 500 items. Please check your stock.")
             break
