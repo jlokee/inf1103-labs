@@ -13,6 +13,8 @@ def get_valid_input():
     elif inventory.startswith("-") and inventory[1:].isdigit():
         print("Inventory cannot be negative. Please enter a valid number.")
         return "rejected"
+    elif inventory == "report":
+        generate_report(total_inventory, rej_inventory)
     else:
         print("Invalid input. Please enter a valid number.")
         return "rejected"
@@ -25,6 +27,10 @@ def calculate_tax(amount):
     tax_rate = 0.10  # 10% tax rate
     tax_amount = amount * tax_rate
     return tax_amount
+
+def generate_report(total_units, failed_attempts):
+    print("Total Units Processed is", total_units, "items.")
+    print("Rejected Entries is", failed_attempts)
 
 while True:
     inventory = get_valid_input()
@@ -44,6 +50,7 @@ while True:
             print("Tax for this transaction is $", tax)
     elif inventory == "rejected":
         rej_inventory += 1
+    
 
 print("Total Units Processed is", total_inventory, "items.")
 print("Total tax collected is $", total_tax)
