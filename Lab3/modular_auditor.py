@@ -1,6 +1,8 @@
 inventory = 0
 total_inventory = 0
 rej_inventory = 0
+tax = 0.0
+total_tax = 0.0
 
 def get_valid_input():
     inventory = input("Enter the number of items in inventory (or type 'quit' to exit): ")
@@ -19,6 +21,11 @@ def process_delivery(current_total, new_value):
     current_total += new_value
     return current_total
 
+def calculate_tax(amount):
+    tax_rate = 0.10  # 10% tax rate
+    tax_amount = amount * tax_rate
+    return tax_amount
+
 while True:
     inventory = get_valid_input()
     if inventory == "quit":
@@ -31,7 +38,12 @@ while True:
             print("Alert: Inventory exceeds 500 items. Please check your stock.")
             break
         else:
+            tax = round(calculate_tax(inventory),2)
+            total_tax += tax
             print("You have", total_inventory, "items in inventory.")
+            print("Tax for this transaction is $", tax)
     elif inventory == "rejected":
         rej_inventory += 1
 
+print("Total Units Processed is", total_inventory, "items.")
+print("Total tax collected is $", total_tax)
