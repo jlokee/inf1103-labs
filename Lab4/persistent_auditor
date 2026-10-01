@@ -1,0 +1,30 @@
+quantity = 0
+product = ""
+order = []
+
+
+def get_valid_input():
+    product = input("Enter Product Name: ")
+    if product.lower() == "quit":
+        return "quit", 0
+    elif product == "Wireless Mouse" or product == "Keyboard" or product == "USB Cable" or product == "Laptop Stand":
+        quantity = input("Enter Quantity: ")
+        if quantity.isdigit():
+            return product, int(quantity)
+        
+
+def load_inventory_from_file():
+    with open("Lab4/inventory.txt", 'r') as file:
+        line1 = file.readline()
+        line2 = file.readline()
+        line3 = file.readline()
+    print("Current Inventory:\n")
+    print(line1.strip())
+    print(line2.strip())
+    print(line3.strip())
+
+load_inventory_from_file()
+while True:
+    product, quantity = get_valid_input()
+    if product == "quit":
+        break
