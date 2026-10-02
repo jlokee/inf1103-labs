@@ -1,9 +1,11 @@
 import json
-
+json_check = False
 
 
 def load_inventory():
-    with open("Lab5/inventory.json", 'r') as file:  
+    global json_check
+    with open("Lab5/inventory.json", 'r') as file: 
+        json_check = True
         return json.load(file)
     print()
 
@@ -24,4 +26,9 @@ def print_inventory(inventory):
 
 print("==================================\n Welcome to the Inventory Manager\n==================================\n\n")
 inventory = load_inventory()
+if json_check == True:
+    print("inventory.json found.\nInventory loaded successfully.")
+else:
+    print("inventory.json not found.\nStarting with an empty inventory.")
+
 print_inventory(inventory)
