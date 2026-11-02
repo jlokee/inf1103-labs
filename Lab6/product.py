@@ -30,10 +30,19 @@ class Product:
               f"Price: ${self.__price:.2f} | "
               f"Stock: {self.__stock}")
 
-    def display_details(self):
-        print ("Product Found:\n"
-                f"Name: {self.__name}\n"
-                f"Current Stock: {self.__stock}\n")
+    def display_details(self, status: str):
+        if status == "update":
+            print("Product Found:\n"
+                  f"Name: {self.__name}\n"
+                  f"Current Stock: {self.__stock}\n")
+        else:
+            print("Product Found:\n"
+                  "---------------------------------\n"
+                  f"ID: {self.__product_id}\n"
+                  f"Name: {self.__name}\n"
+                  f"Price: ${self.__price:.2f}\n"
+                  f"Current Stock: {self.__stock}\n"
+                  "---------------------------------\n")
 
     def to_dict(self):
         return {
