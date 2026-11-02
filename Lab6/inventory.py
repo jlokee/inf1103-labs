@@ -13,11 +13,6 @@ class Inventory:
         else:
             self.__products.append(product)
 
-    def update_stock(self, product_id: str, new_stock: int):
-        for product in self.__products:
-            if product.get_product_id() == product_id:
-                return product.update_stock(new_stock)
-        return False
 
     def search_product(self, product_id: str):
         for product in self.__products:
@@ -32,7 +27,6 @@ class Inventory:
         print("Current Inventory:\n")
         for product in self.__products:
             product.display_product_info()
-            print("-------------------")
 
     def get_inventory(self):
         return list(self.__products)
