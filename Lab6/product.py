@@ -5,17 +5,17 @@ class Product:
         self.__price = float(price)
         self.__stock = int(stock)
 
-    def get_product_id(self) -> str:
+    def get_product_id(self):
         return self.__product_id
 
 
-    def get_name(self) -> str:
+    def get_name(self):
         return self.__name
 
-    def get_price(self) -> float:
+    def get_price(self):
         return self.__price
 
-    def get_stock(self) -> int:
+    def get_stock(self):
         return self.__stock
 
     def update_stock(self, quantity: int):
@@ -25,17 +25,15 @@ class Product:
         return True
 
     def display_product_info(self):
-        print(f"Product ID: {self.__product_id}")
-        print(f"Name: {self.__name}")
-        print(f"Price: ${self.__price:.2f}")
-        print(f"Stock: {self.__stock}")
+        print(f"ID: {self.__product_id} | "
+              f"Name: {self.__name} | "
+              f"Price: ${self.__price:.2f} | "
+              f"Stock: {self.__stock}")
 
     def display_details(self):
-        print ("Product Found:\n-------------------\n"
+        print ("Product Found:\n"
                 f"Name: {self.__name}\n"
-                f"Price: ${self.__price:.2f}\n"
-                f"Stock: {self.__stock}\n"
-                "-------------------")
+                f"Current Stock: {self.__stock}\n")
 
     def to_dict(self):
         return {
