@@ -3,7 +3,7 @@ from product import Product
 from inventory import Inventory
 
 user_option = 0
-FILE_NAME = "Lab6/OOP_inventory.json"
+FILE_NAME = "C:\\Users\\lokej\\Documents\\INF-1003 Labs\\Lab6\\OOP_inventory.json"
 
 
 def load_inventory(inventory):
@@ -17,8 +17,9 @@ def load_inventory(inventory):
     return True
 
 def print_inventory(inventory):
-    print("Current Inventory:\n")
+    print("--------------------------------------")
     inventory.display_inventory()
+    print("--------------------------------------")
 
 def user_input(inventory):
     while True:
@@ -64,16 +65,17 @@ def update_stock(inventory):
     print("Update Product Stock")
     product_id = input("Enter Product ID:")
     print()
-    if product_id is None:
+    product = inventory.search_product(product_id)
+    if product is None:
         print("Product ID Not Found.")
         return
-    print(f"Product Found: \nName: {inventory[product_id].get_name()}\nCurrent Stock: {inventory[product_id].get_stock()}")
+    product.display_details()
     try:
         new_stock = int(input("\nNew stock quantity: "))
     except ValueError:
         print("Invalid input. Please enter a valid number for stock quantity.")
         return
-    if inventory[product_id].update_stock(new_stock):
+    if product.update_stock(new_stock):
         save_inventory(inventory)
         print("Stock updated successfully!")
     else:
@@ -86,7 +88,7 @@ def search_product(inventory):
     print()
     if product_id in inventory:
         product_info = inventory[product_id]
-        print(f"Product Found:\n-------------------\nName: {product_info.get_name()}\nPrice: ${product_info.get_price():.2f}\nStock: {product_info.get_stock()}\n-------------------")
+        product_info.display_details()
     else:
         print("Product ID not found.")
 
@@ -110,7 +112,7 @@ def main():
     print("==================================\n Welcome to the Inventory Manager\n==================================\n")
     inventory = Inventory()
     if load_inventory(inventory):
-        print("Inventory loaded successfully!")
+        print("OOP_inventory.json found.\nInventory loaded successfully!\n")
     else:
         print("No existing inventory found. Starting with an empty inventory.")
     print_menu()
@@ -118,6 +120,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
