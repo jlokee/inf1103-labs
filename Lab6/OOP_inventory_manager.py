@@ -3,7 +3,7 @@ from product import Product
 from inventory import Inventory
 
 user_option = 0
-FILE_NAME = "C:\\Users\\lokej\\Documents\\INF-1003 Labs\\Lab6\\OOP_inventory.json"
+FILE_NAME = "OOP_inventory.json"
 
 
 def load_inventory(inventory):
@@ -65,11 +65,12 @@ def update_stock(inventory):
     print("Update Product Stock")
     product_id = input("Enter Product ID:")
     print()
+    status = "update"
     product = inventory.search_product(product_id)
     if product is None:
         print("Product ID Not Found.")
         return
-    product.display_details()
+    product.display_details(status)
     try:
         new_stock = int(input("\nNew stock quantity: "))
     except ValueError:
@@ -86,9 +87,10 @@ def search_product(inventory):
     print("Search Product")
     product_id = input("Enter Product ID: ")
     print()
-    if product_id in inventory:
-        product_info = inventory[product_id]
-        product_info.display_details()
+    status = "search"
+    product = inventory.search_product(product_id)
+    if product:
+        product.display_details(status)
     else:
         print("Product ID not found.")
 
