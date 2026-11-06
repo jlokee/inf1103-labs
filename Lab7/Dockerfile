@@ -6,6 +6,6 @@ COPY product.py .
 COPY inventory.py .
 COPY physical.py .
 COPY digital.py .
-COPY canbeshipped.py .
+COPY canbeship.py .
 
 CMD ["python", "OOP_inventory_manager.py"]
